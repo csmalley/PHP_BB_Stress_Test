@@ -10,7 +10,7 @@ Scenario: Registering A New User
   When I register as a new user
   Then I should see the Thank You page
 
-#@ControlPanelTest
+@ControlPanelTest
 Scenario: Editing User Settings
   Given I am a returning user to the site http://xpan.b-body.org
   When I enter the User Control Panel
