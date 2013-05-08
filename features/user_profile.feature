@@ -24,9 +24,9 @@ Scenario: Posting To A Thread
   Then I should be able to create a new thread
 
 
-
-#Scenario: Post To An Existing Thread
-#  Given I am a returning registered user to the site
-#  When I enter a forum with an existing thread
-#  Then I should be able to post to the existing thread
+@ExistingThread
+Scenario: Post To An Existing Thread
+  Given I am a returning registered user to the site http://xpan.b-body.org
+  When I enter a forum with an existing thread Forum Test 1
+  Then I should be able to post to the existing thread
 
