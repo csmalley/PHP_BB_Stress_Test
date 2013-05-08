@@ -8,7 +8,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/user_profile.feature" changelist="38583311-9f66-4811-92c6-16d458e12018" time="1368019792611" ignored="false" />
     <file path="/phpBB_steps.rb" changelist="38583311-9f66-4811-92c6-16d458e12018" time="1368021937169" ignored="false" />
-    <file path="/Dummy.txt" changelist="38583311-9f66-4811-92c6-16d458e12018" time="1368022233731" ignored="false" />
+    <file path="/Dummy.txt" changelist="38583311-9f66-4811-92c6-16d458e12018" time="1368022272131" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +309,11 @@
       <created>1368022238429</created>
       <updated>1368022238429</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="just a quick test of a different commit&#10;">
+      <created>1368022277021</created>
+      <updated>1368022277021</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
