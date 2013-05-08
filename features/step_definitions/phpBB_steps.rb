@@ -1,10 +1,11 @@
 require 'pry'
 require 'watir'
+require 'watir-webdriver'
 
 Given(/^I am a not a registered user on the site (.*?)$/) do |link|
   #pending
 
-  @site = Watir::Browser.new :firefox
+  @site = Watir::Browser.new :chrome
   @site.goto(link)
 
 end
@@ -35,7 +36,7 @@ end
 
 Given(/^I am a returning user to the site (.*?)$/) do |link|
   #pending # express the regexp above with the code you wish you had
-  @site = Watir::Browser.new :firefox
+  @site = Watir::Browser.new :chrome
   @site.goto(link)
   @site.link(:text =>'Register').click
   @site.input(:id => 'agreed').click
@@ -83,7 +84,7 @@ end
 
 
 Given(/^I am a returning registered user to the site(.*?)$/) do |link|
-  @site = Watir::Browser.new :firefox
+  @site = Watir::Browser.new :chrome
   @site.goto(link)
   @site.link(:text =>'Register').click
   @site.input(:id => 'agreed').click
@@ -91,7 +92,7 @@ Given(/^I am a returning registered user to the site(.*?)$/) do |link|
   @site.text_field(:id => 'username').value = ('test'+ @rand.to_s + '@junk.com')
   @username = @site.text_field(:id => 'username').value
 
-  puts 'Username = #{@username}'
+  #puts 'Username = #{@username}'
 
   @site.text_field(:id => 'email').value = @site.text_field(:id => 'username').value
   @site.text_field(:id => 'email_confirm').value = @site.text_field(:id => 'username').value
