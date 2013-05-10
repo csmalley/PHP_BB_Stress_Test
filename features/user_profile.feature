@@ -2,6 +2,7 @@ Feature:
 
   As a phpBB website owner
   I want users to be able to register, edit their settings and post on my site.
+  Let's see if this commits now
 
 
 @RegisteringNewUser
@@ -23,7 +24,7 @@ Scenario: Posting To A Thread
   When I enter the forum Forum Test 1
   Then I should be able to create a new thread
 
-
+   
 @ExistingThread
 Scenario: Post To An Existing Thread
   Given I am a returning registered user to the site http://xpan.b-body.org
