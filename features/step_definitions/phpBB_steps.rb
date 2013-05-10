@@ -4,7 +4,7 @@ require 'watir-webdriver'
 
 Given(/^I am a not a registered user on the site (.*?)$/) do |link|
 
-  @site = Watir::Browser.new #:chrome
+  @site = Watir::Browser.new :chrome
   @site.goto(link)
 
 end
@@ -35,7 +35,7 @@ end
 
 Given(/^I am a returning user to the site (.*?)$/) do |link|
 
-  @site = Watir::Browser.new #:chrome
+  @site = Watir::Browser.new :chrome
   @site.goto(link)
   @site.link(:text =>'Register').click
   @site.input(:id => 'agreed').click
@@ -77,12 +77,12 @@ Then(/^I should be able to save changes to my profile$/) do
 
   @site.close
 
-end 
+end
 
 
 Given(/^I am a returning registered user to the site(.*?)$/) do |link|
 
-  @site = Watir::Browser.new #:chrome
+  @site = Watir::Browser.new :chrome
   @site.goto(link)
   @site.link(:text =>'Register').click
   @site.input(:id => 'agreed').click
