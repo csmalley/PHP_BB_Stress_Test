@@ -122,36 +122,23 @@ Then(/^I should be able to create a new thread$/) do
 end
 
 
-#When(/^I enter a forum with an existing thread (.*?)$/) do |forum|
-
- # @site.home_page_page.forum_link(forum).wait_until_present
- # @site.home_page_page.forum_link(forum).click
-  #@site.link(:text => forum).click
-
-#end
 
 When(/^I post to the existing thread (.*?)$/) do |thread_text|
 
   @site.home_page_page.forum_link('Forum Test 1').wait_until_present
   @site.home_page_page.forum_link('Forum Test 1').click
   #binding.pry
-  @number_of_replies = @site.home_page_page.replies(thread_text).text.to_i #slice(/\d+/)
-  
-  puts "replies = " + @number_of_replies.to_s
+  @number_of_replies = @site.home_page_page.replies(thread_text).text.to_i + 1 #slice(/\d+/)
   
   @site.home_page_page.thread_title_link(thread_text).when_present.click
   @site.post_reply_page.reply_button('Post a reply').click
-  @site.post_reply_page.message.set("Testing 123123123123123")
-  
-  
+  @site.post_reply_page.message.set('Testing 123.  This is reply number # ' + @number_of_replies.to_s + '. WooHoo!')
   
   @site.post_reply_page.post_button.click 
   
-
-
 end
 
-Then(/^I should see the message has posted successfully$/) do
+Then(/^I should see the message I have posted successfully$/) do
 
   @site.home_page_page.great_success.exists?
   

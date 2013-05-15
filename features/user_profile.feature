@@ -28,4 +28,4 @@ Feature:
   Scenario: Post To An Existing Thread
     Given I am a returning registered user to the site 
     When I post to the existing thread testing 123
-    Then I should see the message has posted successfully
+    Then I should see the message I have posted successfully
