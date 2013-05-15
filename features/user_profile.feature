@@ -1,3 +1,5 @@
+@php_bb
+
 Feature: 
   
   As a phpBB website owner
@@ -24,6 +26,6 @@ Feature:
 
   @ExistingThread
   Scenario: Post To An Existing Thread
-    Given I am a returning registered user to the site http://xpan.b-body.org
-    When I enter a forum with an existing thread Forum Test 1
-    Then I should be able to post to the existing thread
+    Given I am a returning registered user to the site 
+    When I post to the existing thread testing 123
+    Then I should see the message has posted successfully

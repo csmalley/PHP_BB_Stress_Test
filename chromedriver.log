@@ -1,0 +1,62 @@
+[0.001][INFO]:      ChromeDriver 26.0.1383.0 /home/cecil/.chromedriver-helper/linux64/chromedriver
+[0.124][FINE]:      Initializing session with capabilities {
+   "browserName": "chrome",
+   "chrome.detach": true,
+   "chromeOptions": {
+      "detach": true
+   },
+   "cssSelectorsEnabled": true,
+   "javascriptEnabled": true,
+   "nativeEvents": false,
+   "platform": "ANY",
+   "rotatable": false,
+   "takesScreenshot": false,
+   "version": ""
+}
+
+[0.164][INFO]:      Using named testing interface
+[5.578][INFO]:      Connected to Chrome successfully. Version: 26.0.1410.63
+[5.702][FINE]:      Command received (/session/f27afd8a47e7eafff6306dedebd0f4b5)
+[5.702][FINE]:      Command finished (/session/f27afd8a47e7eafff6306dedebd0f4b5) with response {
+   "sessionId": "f27afd8a47e7eafff6306dedebd0f4b5",
+   "status": 0,
+   "value": {
+      "acceptSslCerts": false,
+      "applicationCacheEnabled": false,
+      "browserConnectionEnabled": false,
+      "browserName": "chrome",
+      "chrome.chromedriverVersion": "26.0.1383.0",
+      "cssSelectorsEnabled": true,
+      "databaseEnabled": false,
+      "handlesAlerts": true,
+      "javascriptEnabled": true,
+      "locationContextEnabled": false,
+      "nativeEvents": true,
+      "platform": "linux",
+      "rotatable": false,
+      "takesScreenshot": true,
+      "version": "26.0.1410.63",
+      "webStorageEnabled": true
+   }
+}
+
+[5.703][FINE]:      Command received (/session/f27afd8a47e7eafff6306dedebd0f4b5/url) with params {
+   "url": "http://xpan.b-body.org"
+}
+
+[5.703][FINER]:     Waiting for all views to stop loading...
+[5.704][FINER]:     Done waiting for all views to stop loading
+[7.346][FINER]:     Waiting for all views to stop loading...
+[7.353][FINER]:     Done waiting for all views to stop loading
+[7.353][FINE]:      Command finished (/session/f27afd8a47e7eafff6306dedebd0f4b5/url) with response {
+   "sessionId": "f27afd8a47e7eafff6306dedebd0f4b5",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[7.354][FINE]:      Command received (/session/f27afd8a47e7eafff6306dedebd0f4b5/url)
+[7.354][FINER]:     Waiting for all views to stop loading...
+[7.364][FINER]:     Done waiting for all views to stop loading
+[7.365][FINER]:     Waiting for all views to stop loading...

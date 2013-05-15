@@ -1,6 +1,3 @@
-require 'pry'
-require 'watir'
-require 'watir-webdriver'
 
 Given(/^I am a not a registered user on the site (.*?)$/) do |link|
 
@@ -33,7 +30,7 @@ Then(/^I should see the Thank You page$/) do
 end
 
 
-Given(/^I am a returning user to the site (.*?)$/) do |link|
+Given(/^I am a returning user to the site$/) do 
 
   @site = Watir::Browser.new :chrome
   @site.goto(link)
@@ -80,39 +77,36 @@ Then(/^I should be able to save changes to my profile$/) do
 end
 
 
-Given(/^I am a returning registered user to the site(.*?)$/) do |link|
+Given(/^I am a returning registered user to the site$/) do 
 
-  @site = Watir::Browser.new :chrome
-  @site.goto(link)
-  @site.link(:text =>'Register').click
-  @site.input(:id => 'agreed').click
+  @site.home_page_page.register_link.click
+  @site.home_page_page.agree_button.click
   @rand = Random.rand(10000)
-  @site.text_field(:id => 'username').value = ('test'+ @rand.to_s + '@junk.com')
-  @username = @site.text_field(:id => 'username').value
+  
+  @site.register_page.username.set("test" + @rand.to_s + "@junk.com")
+  @username = @site.register_page.username.value
 
-  #puts 'Username = #{@username}'
-
-  @site.text_field(:id => 'email').value = @site.text_field(:id => 'username').value
-  @site.text_field(:id => 'email_confirm').value = @site.text_field(:id => 'username').value
-  @site.text_field(:id => 'new_password').value = @site.text_field(:id => 'username').value
-  @site.text_field(:id => 'password_confirm').value = @site.text_field(:id => 'username').value
-  @site.input(:id => 'submit').click
-
-  @site.link(:title =>'Login').click
-
-  @site.text_field(:id => 'username').set(@username)
-
-  @site.text_field(:id => 'password').set(@username)
-  @site.input(:name =>'login').click
-
-
+  @site.register_page.email.set(@username)
+  @site.register_page.email_confirm.set(@username)
+  @site.register_page.new_password.set(@username) 
+  @site.register_page.password_confirm.set(@username)     
+  @site.register_page.submit_button.click
+  @site.home_page_page.login.wait_until_present
+  @site.home_page_page.login.click
+  
+  @site.login_page.username.set(@username)
+  
+  @site.login_page.password.set(@username)
+  @site.login_page.login_button.click
+  
 end
 
 
 When(/^I enter the forum (.*?)$/) do |forum|
-
-  @site.link(:text => forum).wait_until_present
-  @site.link(:text => forum).click
+  
+  binding.pry
+  @site.home_page_page.forum_test_1_link.wait_until_present
+  @site.home_page_page.forum_test_1_link.click
 
 end
 
@@ -128,20 +122,38 @@ Then(/^I should be able to create a new thread$/) do
 end
 
 
-When(/^I enter a forum with an existing thread (.*?)$/) do |forum|
+#When(/^I enter a forum with an existing thread (.*?)$/) do |forum|
 
-  @site.link(:text => forum).wait_until_present
-  @site.link(:text => forum).click
+ # @site.home_page_page.forum_link(forum).wait_until_present
+ # @site.home_page_page.forum_link(forum).click
+  #@site.link(:text => forum).click
+
+#end
+
+When(/^I post to the existing thread (.*?)$/) do |thread_text|
+
+  @site.home_page_page.forum_link('Forum Test 1').wait_until_present
+  @site.home_page_page.forum_link('Forum Test 1').click
+  #binding.pry
+  @number_of_replies = @site.home_page_page.replies(thread_text).text.to_i #slice(/\d+/)
+  
+  puts "replies = " + @number_of_replies.to_s
+  
+  @site.home_page_page.thread_title_link(thread_text).when_present.click
+  @site.post_reply_page.reply_button('Post a reply').click
+  @site.post_reply_page.message.set("Testing 123123123123123")
+  
+  
+  
+  @site.post_reply_page.post_button.click 
+  
+
 
 end
 
-Then(/^I should be able to post to the existing thread$/) do
+Then(/^I should see the message has posted successfully$/) do
 
-  post_number = @site.li(:class => 'row bg1').dd(:class => 'posts').text.to_i + 1
-  puts "Post number = #{post_number}"
-  @site.li(:class => 'row bg1').a.click
-  @site.link(:text => 'Post a reply').click
-  @site.text_field(:name => 'message').set("Here is reply #{post_number}.  Did it work?")
-  @site.input(:name => 'post').click
-
+  @site.home_page_page.great_success.exists?
+  
 end
+
