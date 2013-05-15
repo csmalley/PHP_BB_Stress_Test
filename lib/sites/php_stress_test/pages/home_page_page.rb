@@ -10,7 +10,7 @@ module PhpStressTest
     element(:forum_link)        {|forum| browser.link(:text => forum)} 
     element(:thread_link)       { browser.link(:class => 'row bg1') }
     element(:thread_title)      { browser.li(:class => 'testing 123') }
-    element(:login)             { browser.link(:text => 'Login') }
+    element(:login_link)             { browser.link(:text => 'Login') }
     element(:thread_title_link) { |thread_name| thread_row(thread_name).link(:text => thread_name)}
     
     element(:thread_row)        { |thread_name| browser.links(:text => thread_name).first.parent.parent }      

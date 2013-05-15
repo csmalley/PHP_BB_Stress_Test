@@ -1,38 +1,40 @@
 
 Given(/^I am a not a registered user on the site (.*?)$/) do |link|
 
-  @site = Watir::Browser.new :chrome
-  @site.goto(link)
+#  @site = Watir::Browser.new :firefox
+#  @site.goto(link)
+#what should I be doing differently here?
 
 end
 
 
 When(/^I register as a new user$/) do
 
-  @site.link(:text =>'Register').click
-  @site.input(:id => 'agreed').click
+  @site.home_page_page.register_link.click
+  @site.home_page_page.agree_button.click
+  
   @rand = Random.rand(10000)
-  @site.text_field(:id => 'username').value = ('test'+ @rand.to_s + '@junk.com')
-  @site.text_field(:id => 'email').value = @site.text_field(:id => 'username').value
-  @site.text_field(:id => 'email_confirm').value = @site.text_field(:id => 'username').value
-  @site.text_field(:id => 'new_password').value = @site.text_field(:id => 'username').value
-  @site.text_field(:id => 'password_confirm').value = @site.text_field(:id => 'username').value
-  @site.input(:id => 'submit').click
+  
+  @site.register_page.username_field.value = ('test'+ @rand.to_s + '@junk.com')
+  @site.register_page.email_field.value = @site.register_page.username_field.value
+  @site.register_page.email_confirm_field.value = @site.register_page.username_field.value
+  @site.register_page.new_password_field.value = @site.register_page.username_field.value
+  @site.register_page.password_confirm_field.value = @site.register_page.username_field.value
+  @site.register_page.submit_button.click
 
 end
 
 
 Then(/^I should see the Thank You page$/) do
 
-  @site.html.include?('#Thank you for registering')
-  @site.close
+  @site.register_page.great_success.exists?
 
 end
 
 
 Given(/^I am a returning user to the site$/) do 
 
-  @site = Watir::Browser.new :chrome
+  @site = Watir::Browser.new :firefox
   @site.goto(link)
   @site.link(:text =>'Register').click
   @site.input(:id => 'agreed').click
@@ -72,32 +74,15 @@ Then(/^I should be able to save changes to my profile$/) do
   @site.input(:name => 'submit').click
   @site.link(:text => 'Board index').click
 
-  @site.close
+  #@site.close
 
 end
 
 
 Given(/^I am a returning registered user to the site$/) do 
 
-  @site.home_page_page.register_link.click
-  @site.home_page_page.agree_button.click
-  @rand = Random.rand(10000)
-  
-  @site.register_page.username.set("test" + @rand.to_s + "@junk.com")
-  @username = @site.register_page.username.value
-
-  @site.register_page.email.set(@username)
-  @site.register_page.email_confirm.set(@username)
-  @site.register_page.new_password.set(@username) 
-  @site.register_page.password_confirm.set(@username)     
-  @site.register_page.submit_button.click
-  @site.home_page_page.login.wait_until_present
-  @site.home_page_page.login.click
-  
-  @site.login_page.username.set(@username)
-  
-  @site.login_page.password.set(@username)
-  @site.login_page.login_button.click
+  @site.home_page_page.login_link.click
+  @site.login_page.login_as('csmalley')
   
 end
 
