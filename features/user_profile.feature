@@ -14,13 +14,13 @@ Feature:
 
   @ControlPanelTest
   Scenario: Editing User Settings
-    Given I am a returning user to the site http://xpan.b-body.org
+    Given I am a returning registered user to the site
     When I enter the User Control Panel
     Then I should be able to save changes to my profile
 
   @PostingToThread
   Scenario: Posting To A Thread
-    Given I am a returning registered user to the site http://xpan.b-body.org
+    Given I am a returning registered user to the site 
     When I enter the forum Forum Test 1
     Then I should be able to create a new thread
 

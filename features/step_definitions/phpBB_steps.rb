@@ -58,23 +58,21 @@ end
 
 
 When(/^I enter the User Control Panel$/) do
-  @site.link(:title =>'User Control Panel').click
-  @site.span(:text => 'Profile').click
+ # binding.pry
+  @site.home_page_page.control_panel_link.click
+  @site.user_control_panel_page.profile_tab.click
 
 end
 
 
 Then(/^I should be able to save changes to my profile$/) do
 
-  @site.text_field(:id => 'website').set('http://www.b-body.org')
-  @site.text_field(:id => 'location').set('Husker Nation!')
-  @site.select_list(:id => 'bday_day').select('5')
-  @site.select_list(:id => 'bday_month').select('5')
-  @site.select_list(:id => 'bday_year').select('1977')
-  @site.input(:name => 'submit').click
-  @site.link(:text => 'Board index').click
-
-  #@site.close
+   @site.profile_page.website_field.set('http://www.b-body.org')
+   @site.profile_page.location_field.set('Husker Nation!')
+   @site.profile_page.bday_day_field.select('5')
+   @site.profile_page.bday_month_field.select('5')
+   @site.profile_page.bday_year_field.select('1977')
+   @site.profile_page.submit_button.click
 
 end
 
@@ -89,7 +87,7 @@ end
 
 When(/^I enter the forum (.*?)$/) do |forum|
   
-  binding.pry
+  #binding.pry
   @site.home_page_page.forum_test_1_link.wait_until_present
   @site.home_page_page.forum_test_1_link.click
 
